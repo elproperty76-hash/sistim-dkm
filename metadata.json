@@ -1,0 +1,6 @@
+{
+  "name": "Sistem Manajemen DKM Rancaekek",
+  "description": "Sistem Informasi Manajemen Dewan Kemakmuran Masjid (DKM) Kecamatan Rancaekek, Kabupaten Bandung, Jawa Barat – Peta Lokasi Google Maps Masjid, Penanggalan Hijriah & Konverter Masehi-Hijriah, Jadwal Sholat Kemenag RI, Donasi QRIS Digital, Pendataan Jamaah, Keuangan Kas Transparan, Majelis Taklim, dan Laporan Real-Time.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
