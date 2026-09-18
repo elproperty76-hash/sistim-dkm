@@ -9,6 +9,7 @@ import { GalleryView } from './components/GalleryView';
 import { ProgramView } from './components/ProgramView';
 import { LaporanView } from './components/LaporanView';
 import { BroadcastView } from './components/BroadcastView';
+import { SettingsView } from './components/SettingsView';
 import { PrayerSchedule } from './components/PrayerSchedule';
 import { AIModal } from './components/AIModal';
 import { LoginModal } from './components/LoginModal';
@@ -123,7 +124,10 @@ export default function App() {
     localStorage.setItem('dkm_mosque_profile', JSON.stringify(profile));
     try {
       await saveMosqueProfileToFirestore(profile, userScope);
-      setToastMessage(`Profil identitas ${profile.name} berhasil disimpan ke database Anda.`);
+      // Simpan juga ke scope public_demo agar permanen walaupun log out admin
+      await saveMosqueProfileToFirestore(profile, 'public_demo');
+      localStorage.setItem('dkm_mosque_profile_public_demo', JSON.stringify(profile));
+      setToastMessage(`Profil identitas ${profile.name} berhasil disimpan secara permanen.`);
     } catch (e) {
       console.error("Failed to save mosque profile to Firestore:", e);
       setToastMessage(`Profil disimpan lokal, namun gagal sync Firebase.`);
@@ -430,6 +434,15 @@ export default function App() {
               broadcastList={broadcastList}
               onSendBroadcast={handleSendBroadcast}
               isAdmin={Boolean(currentUser)}
+            />
+          )}
+          {currentTab === 'settings' && (
+            <SettingsView
+              currentUser={currentUser}
+              onLogin={handleLogin}
+              onLogout={handleLogout}
+              mosqueProfile={mosqueProfile}
+              onUpdateMosqueProfile={handleUpdateMosqueProfile}
             />
           )}
         </main>

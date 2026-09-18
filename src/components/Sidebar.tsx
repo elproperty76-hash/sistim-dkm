@@ -1,5 +1,5 @@
 import React from 'react';
-import { LayoutDashboard, Users, Wallet, Archive, Image as ImageIcon, Calendar, FileText, Send, Clock } from 'lucide-react';
+import { LayoutDashboard, Users, Wallet, Archive, Image as ImageIcon, Calendar, FileText, Send, Clock, Settings } from 'lucide-react';
 
 interface SidebarProps {
   currentTab: string;
@@ -18,6 +18,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentTab, setCurrentTab, mos
     { id: 'program', label: 'Majelis & Program', icon: Calendar },
     { id: 'laporan', label: 'Laporan Publik Real-Time', icon: FileText },
     { id: 'broadcast', label: 'Pesan Instan / Broadcast', icon: Send },
+    { id: 'settings', label: 'Pengaturan Aplikasi', icon: Settings },
   ];
 
   return (
